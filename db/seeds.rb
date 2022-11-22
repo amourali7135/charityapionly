@@ -20,16 +20,13 @@ issues = ["Poverty", "Housing", "Social Justice", "Food", "LGBQT", "Children", "
 
 puts 'Creating 5 fake users/charities...'
 5.times do
-#   file = URI.open('http://www.pngmart.com/files/11/Charity-PNG-Image.png')  #this must be put here!  Not a global variable!
   user = User.new(
     email: Faker::Internet.unique.email,
-    # username: Faker::Alphanumeric.alpha(number: 10),
     password: 'password'
   )
   user.save!
 
   charity = Charity.new(
-    # remote_photo_url: Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg"), #This is a fallback, use active storage next time for seeding instead, lecture somewhere.
     name:  Faker::Name.name,
     aged:  Faker::Number.between(from: 0, to: 150),
     income: Faker::Number.between(from: 0, to: 100000000),
@@ -49,16 +46,19 @@ puts 'Creating 5 fake users/charities...'
     facebook:  Faker::Internet.domain_name,
     website:  Faker::Internet.domain_name,
     user_id: User.pluck(:id).sample,
-    # photo: Faker::Avatar.image,
     # tag_list: Inquiry.tags.sample(3),
   )
-#   charity.photo.attach(io: file, filename: 'Charity-PNG-Image.png', content_type: 'image/png')
+
+charity.photo.attach(
+    io: File.open('app/assets/images/bourdain.jpg'),
+    filename: 'bourdain.jpg',
+    content_type: 'image/jpg',
+)
 #   charity.user = User.pluck(:id).sample
   charity.save!
 
   puts 'Creating 10 fake campaigns...'
   2.times do
-    # file = URI.open('http://www.pngmart.com/files/10/Gold-Dollar-Sign-Transparent-PNG.png')
     campaign = Campaign.new(
       title: Faker::Lorem.sentences(number: 1),
       goal: Faker::Quote.most_interesting_man_in_the_world,
@@ -72,7 +72,11 @@ puts 'Creating 5 fake users/charities...'
       charity_id: Charity.pluck(:id).sample
     #   campaign.photo.attach(io: file, filename: 'charity.png', content_type: 'charity/png')
     )
-    campaign.photo.attach(io: file, filename: 'Gold-Dollar-Sign-Transparent-PNG.png', content_type: 'image/png')
+    campaign.photo.attach(
+        io: File.open('app/assets/images/moneysign.jpeg'),
+        filename: 'moneysign.jpeg',
+        content_type: 'image/jpg',
+    )
     campaign.save!
   end
   puts 'Finished!'
