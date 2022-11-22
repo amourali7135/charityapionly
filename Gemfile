@@ -47,6 +47,19 @@ gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+# Authorization + API lecture follow along
+gem "pundit"
+# Fake seed data 
+gem "faker"
+# Images
+gem "cloudinary"
+# Token for API calls
+gem 'simple_token_authentication', github: "/gonzalo-bulnes/simple_token_authentication", ref: "refs/pull/391/head"
+
+# gem "carrierwave-video", github: "rheaton/carrierwave-video", ref: "refs/pull/13/head"
+
+
+
 
 gem "devise"
 gem "autoprefixer-rails"

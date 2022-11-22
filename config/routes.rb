@@ -15,4 +15,10 @@ Rails.application.routes.draw do
 
   get '/search' => 'search#index'
   
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :charities, only: [ :index, :show, :update, :create, :destroy ]
+    end
+  end
+
 end

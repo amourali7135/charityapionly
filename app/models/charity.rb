@@ -1,7 +1,7 @@
 class Charity < ApplicationRecord
   belongs_to :user
   has_many :campaigns, dependent: :destroy
-#   has_one_attached :photo
+  has_one_attached :photo
 
 
 
@@ -11,7 +11,7 @@ class Charity < ApplicationRecord
   validates :instagram, uniqueness: true
   validates :website, uniqueness: true
   validates :website, presence: true
-  validates :country, presence: true
+  # validates :country, presence: true
   validates :income, presence: true
   validates :aged, numericality: true
   validates :size, numericality: true
