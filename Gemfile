@@ -55,6 +55,8 @@ gem "faker"
 gem "cloudinary"
 # Token for API calls
 gem 'simple_token_authentication', github: "/gonzalo-bulnes/simple_token_authentication", ref: "refs/pull/391/head"
+# Ruby linter
+# gem install rubocop
 
 # gem "carrierwave-video", github: "rheaton/carrierwave-video", ref: "refs/pull/13/head"
 
