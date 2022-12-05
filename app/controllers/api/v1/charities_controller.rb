@@ -14,6 +14,11 @@ class Api::V1::CharitiesController < Api::V1::BaseController
     @charity = Charity.new(charity_params)
     @charity.user = current_user
     authorize @charity # Add this line
+    if @charity.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def show
@@ -23,7 +28,7 @@ class Api::V1::CharitiesController < Api::V1::BaseController
   def update
     authorize @charity
     if @charity.update(charity_params)
-      render :show
+      render :show, status: :updated
     else
       render_error
     end

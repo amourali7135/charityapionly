@@ -22,14 +22,27 @@ class Api::V1::CampaignsController < Api::V1::BaseController
     @campaign = Campaign.new(campaign_params)
     @campaign.charity = @charity
     authorize @campaign
+    if @campaign.save
+      render :show, status: :created
+    else
+      render_error
+    end
   end
 
   def update
     authorize @campaign
+    if @campaign.update(campaign_params)
+        render :show, status: :updated
+    else
+        render_error
+    end
   end
+
 
   def destroy
     authorize @campaign
+    @campaign.destroy 
+    head :no_content
   end
 
   private

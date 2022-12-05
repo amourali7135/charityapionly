@@ -3,7 +3,7 @@ class CharityPolicy < ApplicationPolicy
     def resolve
       scope.all
       # record.user == user
-      # record.user == 
+        # scope.where
     end
   end
 
@@ -12,7 +12,7 @@ class CharityPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+  true
   end
 
   def update?

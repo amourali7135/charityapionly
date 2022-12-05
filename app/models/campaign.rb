@@ -3,7 +3,6 @@ class Campaign < ApplicationRecord
   has_one_attached :photo
 
 
-
   validates :title, uniqueness: true
   validates :title, presence: true
   validates :title, length: { minimum: 5 }
