@@ -1,6 +1,10 @@
 class Api::V1::CharitiesController < Api::V1::BaseController
   before_action :set_charity, only: %i[show update destroy]
 
+  def index
+    @charities = policy_scope(Charity)
+  end
+
   def new
     @charity = Charity.new
     authorize @charity # Add this line
@@ -14,10 +18,6 @@ class Api::V1::CharitiesController < Api::V1::BaseController
 
   def show
     authorize @charity
-  end
-
-  def index
-    @charities = policy_scope(Charity)
   end
 
   def update
@@ -48,7 +48,6 @@ class Api::V1::CharitiesController < Api::V1::BaseController
   end
 
   def edit
-    
     authorize @charity
   end
 

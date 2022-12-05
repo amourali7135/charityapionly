@@ -2,6 +2,8 @@ class CharityPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
+      # record.user == user
+      # record.user == 
     end
   end
 

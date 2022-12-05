@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   
-  resources :charities do
-    resources :campaigns#, except: [:index]
-  end
+  # resources :charities do
+  #   resources :campaigns#, except: [:index]
+  # end
 
   resources :campaigns, only: [:index]
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :charities, only: [ :index, :show, :update, :create, :destroy ] do 
         resources :campaigns, only: [:index, :new, :create]
       end
-      resources :campaigns, only: [:show, :edit, :update, :destroy]
+      resources :campaigns, only: [:show, :edit, :update, :destroy, :index]
       end
     end
 
